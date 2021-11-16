@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        /* Generate Random Computer Choice */
+        let options = ["rock", "paper", "scissors"];
+        function computerPlay() {
+            let option = options[Math.floor(Math.random()* options.length)];
+            return (option.toLowerCase());
+        }
+        /* Asking Player for Choice */
+        function askPlayer() {
+            let option = prompt("Rock, Paper or Scissors");
+            return (option.toLowerCase());
+        }
+    
+        let playerScore = 0;
+        let computerScore = 0; 
+
+        /* Five rounds of rock, paper, scissors */
+        function game() {
+            for (let i = 1; i <= 5; i++) {
+                let playerSelection = askPlayer();
+                let computerSelection = computerPlay();
+                function playRound(playerSelection, computerSelection) {       
+            if(playerSelection == 'rock' && computerSelection == 'paper') {
+                computerScore = computerScore + 1;
+                return computerScore;
+            } else if(playerSelection == 'rock' && computerSelection == 'rock') {
+                console.log("Rock and Rock");
+            } else if(playerSelection == 'rock' && computerSelection == 'scissors') {
+                playerScore = playerScore + 1;
+                return playerScore;
+            } else if(playerSelection == 'paper' && computerSelection == 'rock') {
+                playerScore = playerScore + 1;
+                return playerScore;
+            } else if(playerSelection == 'paper' && computerSelection == 'paper') {
+                console.log("Paper and Paper");
+            } else if(playerSelection == 'paper' && computerSelection == 'scissors') {
+                computerScore = computerScore + 1;
+                return computerScore;
+            } else if(playerSelection == 'scissors' && computerSelection == 'rock') {
+                computerScore = computerScore + 1;
+                return computerScore;
+            } else if(playerSelection == 'scissors' && computerSelection == 'paper') {
+                playerScore = playerScore + 1;
+                return playerScore;
+            } else if(playerSelection == 'scissors' && computerSelection == 'scissors') {
+                console.log("Scissors and Scissors");
+            }
+            
+        }
+        playRound(playerSelection, computerSelection);
+            }
+        }
+        game();
+
+        if(playerScore > computerScore) {
+            console.log("You win, congratulations!");
+        } else if (playerScore < computerScore) {
+            console.log("You lose, better luck next time.");
+        } else if (playerScore === computerScore) {
+            console.log("It's a tie.");
+        }
+        
+    </script>
+</body>
+</html>
